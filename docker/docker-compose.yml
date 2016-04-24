@@ -1,13 +1,8 @@
 beego:
-  image: mozhata/beego:1.6
-  working_dir: /code/beego/site-demo
-  command: go run mysite/main.go
+  image: mozhata/golang:1.6
+  working_dir: /go/src/github.com/zykzhang/site-demo
+  command: godep go run cmd/gin/main.go --godep -i --watch=./ --path=mysite/ run -- --v=1 --alsologtostderr
   volumes:
-    - ../:/code/beego/site-demo
+    - $GOPATH/src/github.com/zykzhang/site-demo:/go/src/github.com/zykzhang/site-demo
   ports:
     - 8080:8080
-
-# docker run -it -p 8080:8080 -w /go/src/github.com/zykzhang/site-demo -v $HOME/work/src/github.com/zykzhang/site-demo:/go/src/github.com/zykzhang/site-demo  mozhata/golang:1.6 godep go run cmd/gin/main.go --godep -i --watch=./ --path=mysite/ run -- --v=1 --alsologtostderr
-
-# 整理代码库, 和参数
-# image可以去掉gin
