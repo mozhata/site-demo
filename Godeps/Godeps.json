@@ -1,0 +1,45 @@
+{
+	"ImportPath": "github.com/zykzhang/site-demo",
+	"GoVersion": "go1.6",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/astaxie/beego",
+			"Comment": "v1.6.1-5-g88c5dfa",
+			"Rev": "88c5dfa6ead42e624c2e7d9e04eab6cb2d07412a"
+		},
+		{
+			"ImportPath": "github.com/codegangsta/cli",
+			"Comment": "1.2.0-95-g9b2bd2b",
+			"Rev": "9b2bd2b3489748d4d0a204fa4eb2ee9e89e0ebc6"
+		},
+		{
+			"ImportPath": "github.com/codegangsta/envy/lib",
+			"Rev": "4b78388c8ce4fa412440ca4eaa654e2fdd752e49"
+		},
+		{
+			"ImportPath": "github.com/codegangsta/gin/lib",
+			"Rev": "20c9707f2046c2a1019cea9659931731cf15a7dd"
+		},
+		{
+			"ImportPath": "github.com/golang/glog",
+			"Rev": "44145f04b68cf362d9c4df2182967c2275eaefed"
+		},
+		{
+			"ImportPath": "github.com/jtolds/gls",
+			"Rev": "9a4a02dbe491bef4bab3c24fd9f3087d6c4c6690"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/assertions",
+			"Comment": "1.5.0-380-g4727d76",
+			"Rev": "4727d767ce8a81811c40eedc2a836c85aebb4d09"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/goconvey/convey",
+			"Comment": "1.6.1-20-gcc5d85f",
+			"Rev": "cc5d85f4f15bd2163abf0fe6e6753356dde72aa2"
+		}
+	]
+}
