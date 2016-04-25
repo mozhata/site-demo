@@ -6,3 +6,4 @@ beego:
     - $GOPATH/src/github.com/zykzhang/site-demo:/go/src/github.com/zykzhang/site-demo
   ports:
     - 8080:8080
+    - 8088:8088
