@@ -1,2 +1,2 @@
-image:
-	docker build -t mozhata/golang:bee .
+# image:
+	# docker build -t mozhata/golang:bee .

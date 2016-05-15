@@ -25,10 +25,10 @@
 
 ## 说明
 
-因为`golang`的编译器在容器内,容器内只能看到`volume`范围的东西, 所以要用到`godep`把包依赖都整理起来放到`volume`范围内,
+因为`golang`的编译器在容器内,容器内只能看到`volume`范围的东西, 所以要用到`vedor`把包依赖都整理起来放到`volume`范围内,
 这样容器内的程序才能正常编译运行,
 
-`bee`工具好像不支撑`godep`,无法再容器内完成热编译. 所以我弄了个`gin`, 感觉没有`bee`那么好用,勉强凑合了
+我弄了个`gin` 来做热编译的事情, 感觉没有`bee`那么好用, 但是gin的扩展性要比`bee`好, 以后改起来方便
 
 但是日常创建项目还是完全可以使用`bee`的
 
@@ -48,11 +48,21 @@
 - 在根目录使用`bee`工具创建一个新的项目(或者手动创建)
 - 项目能正常运行之后, 在根目录执行
 
->make save_package
+>make vendor
 
 保存依赖包
 
-每次引入新的package都要从新save一下
+## 注意
+
+使用`vendor`需要安装`vendor`工具:
+
+```
+go get -u -v github.com/kardianos/govendor
+```
+
+`vendor`可以参考[这篇博客](http://ipfans.github.io/2016/01/golang-vendor/)
+
+每次引入新的package都要从新make一下
 
 ### 启动容器
 
