@@ -1,2 +1,2 @@
 image:
-	docker build -t mozhata/golang:1.6 .
+	docker build -t mozhata/golang:bee .

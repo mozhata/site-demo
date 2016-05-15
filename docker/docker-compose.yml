@@ -1,7 +1,7 @@
 beego:
-  image: mozhata/golang:1.6
+  image: golang:1.6
   working_dir: /go/src/github.com/zykzhang/site-demo
-  command: godep go run cmd/gin/main.go --godep -i --watch=./ --path=mysite/ run -- --v=1 --alsologtostderr
+  command: go run cmd/gin/main.go -i --watch=./ --path=mysite/ run -- --v=1 --alsologtostderr
   volumes:
     - $GOPATH/src/github.com/zykzhang/site-demo:/go/src/github.com/zykzhang/site-demo
   ports:
