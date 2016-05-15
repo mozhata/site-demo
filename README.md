@@ -2,15 +2,12 @@
 
 ### 这是一个半成品
 
+实现了热编译, go server 和 Mongo, ES链接好了, 但是最底层的API还没有写
+
 ## 期望
 
 搭建一个基于docker容器的网站demo, 为了方便, 先尝试使用beego,计划使用MySQL存放常用读写数据, 使用MongoDB存储常读少改的数据,使用Elasticsearch做索引
 前端...实践下React
-
-## 已实现功能:
-
-- 搭载beego框架的容器正常运行
-- 热编译
 
 ## TODO
 
