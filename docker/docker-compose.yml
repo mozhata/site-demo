@@ -7,3 +7,22 @@ beego:
   ports:
     - 8080:8080
     - 8088:8088
+  links:
+    - mongo
+    - elasticsearch
+
+mongo:
+  image: mongo:3.2
+    # not compatible with mac
+  # volumes:
+    # - $HOME/work/src/github.com/zykzhang/data/mongo:/data/db
+  ports:
+    - 27017:27017
+
+elasticsearch:
+  volumes:
+    - $HOME/work/src/github.com/zykzhang/data/mongo:/data
+  image: elasticsearch:2.3.2
+  ports:
+    - 9200:9200
+
