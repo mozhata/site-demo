@@ -10,6 +10,7 @@ beego:
   links:
     - mongo
     - elasticsearch
+    - redis:redis
 
 mongo:
   image: mongo:3.2
@@ -24,5 +25,9 @@ elasticsearch:
     - $HOME/work/src/github.com/zykzhang/data/mongo:/data
   image: elasticsearch:2.3.2
   ports:
-    - 9200:9200
+    - 9300:9200
 
+redis:
+  image: redis:latest
+  ports:
+    - 6377:6379
