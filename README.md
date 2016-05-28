@@ -46,15 +46,14 @@
 - 项目能正常运行之后, 在根目录执行
 
 >make vendor
-
 保存依赖包
 
 ## 注意
 
-使用`vendor`需要安装`vendor`工具:
+使用`vendor`需要安装`vendor`工具,我用的是godep:
 
 ```
-go get -u -v github.com/kardianos/govendor
+github.com/tools/godep
 ```
 
 `vendor`可以参考[这篇博客](http://ipfans.github.io/2016/01/golang-vendor/)

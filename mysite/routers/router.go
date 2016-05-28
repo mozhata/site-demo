@@ -4,11 +4,10 @@ import (
 	"fmt"
 
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/context"
 	"github.com/golang/glog"
 	"github.com/zykzhang/site-demo/mysite/cache/myredis"
 	"github.com/zykzhang/site-demo/mysite/controllers"
-	// "golang.org/x/net/context"
-	"github.com/astaxie/beego/context"
 )
 
 func init() {
@@ -17,8 +16,8 @@ func init() {
 		ctx.Output.Body([]byte("bar"))
 	})
 	beego.Any("/redis", func(ctx *context.Context) {
-		glog.Infoln("redis....")
-		fmt.Println("redis...")
+		glog.Infoln("line-20--redis....")
+		fmt.Println("line21--redis...")
 		tryRedis()
 		ctx.Output.Body([]byte("reidis"))
 	})
