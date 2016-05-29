@@ -25,6 +25,7 @@ var (
 )
 
 func main() {
+	// flag.Parse()
 	app := cli.NewApp()
 	app.Name = "gin"
 	app.Usage = "A live reload utility for Go web applications."

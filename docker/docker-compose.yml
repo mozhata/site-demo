@@ -15,8 +15,8 @@ beego:
 mongo:
   image: mongo:3.2
     # not compatible with mac
-  # volumes:
-    # - $HOME/work/src/github.com/zykzhang/data/mongo:/data/db
+  volumes:
+    - $HOME/work/src/github.com/zykzhang/data/mongo:/data/db
   ports:
     - 27017:27017
 
