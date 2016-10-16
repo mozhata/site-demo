@@ -7,49 +7,9 @@
 	],
 	"Deps": [
 		{
-			"ImportPath": "github.com/astaxie/beego",
-			"Comment": "v1.7.1",
-			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
-		},
-		{
-			"ImportPath": "github.com/astaxie/beego/config",
-			"Comment": "v1.7.1",
-			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
-		},
-		{
-			"ImportPath": "github.com/astaxie/beego/context",
-			"Comment": "v1.7.1",
-			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
-		},
-		{
-			"ImportPath": "github.com/astaxie/beego/grace",
-			"Comment": "v1.7.1",
-			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
-		},
-		{
-			"ImportPath": "github.com/astaxie/beego/logs",
-			"Comment": "v1.7.1",
-			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
-		},
-		{
-			"ImportPath": "github.com/astaxie/beego/session",
-			"Comment": "v1.7.1",
-			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
-		},
-		{
-			"ImportPath": "github.com/astaxie/beego/toolbox",
-			"Comment": "v1.7.1",
-			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
-		},
-		{
-			"ImportPath": "github.com/astaxie/beego/utils",
-			"Comment": "v1.7.1",
-			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
-		},
-		{
 			"ImportPath": "github.com/fsnotify/fsnotify",
-			"Comment": "v1.4.2",
-			"Rev": "629574ca2a5df945712d3079857300b5e4da0236"
+			"Comment": "v1.4.2-1-gbd2828f",
+			"Rev": "bd2828f9f176e52d7222e565abb2d338d3f3c103"
 		},
 		{
 			"ImportPath": "github.com/garyburd/redigo/internal",
@@ -66,44 +26,9 @@
 			"Rev": "23def4e6c14b4da8ac2ed8007337bc5eb5007998"
 		},
 		{
-			"ImportPath": "github.com/gopherjs/gopherjs/js",
-			"Comment": "go1.5-64-g78919e0",
-			"Rev": "78919e0ff9540aec8ec7ddf27fbf607ae41abc2f"
-		},
-		{
-			"ImportPath": "github.com/jtolds/gls",
-			"Comment": "v4.2.0",
-			"Rev": "8ddce2a84170772b95dd5d576c48d517b22cac63"
-		},
-		{
-			"ImportPath": "github.com/smartystreets/assertions",
-			"Comment": "1.6.0-6-g40711f7",
-			"Rev": "40711f7748186bbf9c99977cd89f21ce1a229447"
-		},
-		{
-			"ImportPath": "github.com/smartystreets/assertions/internal/go-render/render",
-			"Comment": "1.6.0-6-g40711f7",
-			"Rev": "40711f7748186bbf9c99977cd89f21ce1a229447"
-		},
-		{
-			"ImportPath": "github.com/smartystreets/assertions/internal/oglematchers",
-			"Comment": "1.6.0-6-g40711f7",
-			"Rev": "40711f7748186bbf9c99977cd89f21ce1a229447"
-		},
-		{
-			"ImportPath": "github.com/smartystreets/goconvey/convey",
-			"Comment": "1.6.2-2-gc53abc9",
-			"Rev": "c53abc99456fa3402dd33c15ee51c3e545e04a3f"
-		},
-		{
-			"ImportPath": "github.com/smartystreets/goconvey/convey/gotest",
-			"Comment": "1.6.2-2-gc53abc9",
-			"Rev": "c53abc99456fa3402dd33c15ee51c3e545e04a3f"
-		},
-		{
-			"ImportPath": "github.com/smartystreets/goconvey/convey/reporting",
-			"Comment": "1.6.2-2-gc53abc9",
-			"Rev": "c53abc99456fa3402dd33c15ee51c3e545e04a3f"
+			"ImportPath": "github.com/julienschmidt/httprouter",
+			"Comment": "v1.1-34-gd8ff598",
+			"Rev": "d8ff598a019f2c7bad0980917a588193cf26666e"
 		},
 		{
 			"ImportPath": "github.com/zykzhang/livereload/colorlog",

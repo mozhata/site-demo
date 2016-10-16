@@ -8,4 +8,7 @@ server:
 
 .PHONY: log
 log:
-	cd ./docker;docker-compose logs -f goserver
+	cd ./docker;docker-compose logs -f sitedemo_server
+
+clean_containers:
+	docker rm $$(docker stop $$(docker ps -q -a))

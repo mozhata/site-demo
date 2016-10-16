@@ -1,37 +1,26 @@
 package main
 
 import (
-	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/context"
+	"fmt"
+	"log"
+	"net/http"
+
 	"github.com/garyburd/redigo/redis"
 	"github.com/golang/glog"
-	_ "github.com/zykzhang/site-demo/server/routers"
+	"github.com/julienschmidt/httprouter"
 )
 
 func main() {
-	beego.SetStaticPath("/sta", "temp")
-	beego.Router("/hello", &MainController{})
+	router := httprouter.New()
+	router.GET("/hi", Hi)
 
-	beego.Any("/foo", func(ctx *context.Context) {
-		ctx.Output.Body([]byte("bar"))
-	})
-	beego.Any("/redis", func(ctx *context.Context) {
-		glog.Infoln("line-20--redis....")
-		tryRedis2()
-		// tryRedis()
-		ctx.Output.Body([]byte("reidis"))
-	})
-
-	beego.Run()
+	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
-type MainController struct {
-	beego.Controller
+func Hi(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	fmt.Fprintf(w, "hi, this is %s", "httprouter")
 }
 
-func (this *MainController) Get() {
-	this.Ctx.WriteString("hello world~~ ")
-}
 func tryRedis2() {
 	// conn := myredis.NewConn()
 	conn, err := redis.Dial("tcp", "redis:6379")
