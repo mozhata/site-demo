@@ -1,12 +1,12 @@
 beego:
-  image: golang:1.6
+  image: golang:1.7.1
   working_dir: /go/src/github.com/zykzhang/site-demo
   command: go run cmd/gin/main.go -i --watch=./ --path=mysite/ run -- --v=1 --alsologtostderr
   volumes:
-    - $GOPATH/src/github.com/zykzhang/site-demo:/go/src/github.com/zykzhang/site-demo
+    - $HOME/go/src/github.com/zykzhang/site-demo:/go/src/github.com/zykzhang/site-demo
   ports:
-    - 8080:8080
-    - 8088:8088
+    - 9090:8080
+    - 8888:8088
   links:
     - mongo
     - elasticsearch
@@ -16,9 +16,9 @@ mongo:
   image: mongo:3.2
     # not compatible with mac
   volumes:
-    - $HOME/work/src/github.com/zykzhang/data/mongo:/data/db
+    - $HOME/work/src/github.com/zykzhang/site-demo/db/mongo:/data/db
   ports:
-    - 27017:27017
+    - 27016:27017
 
 elasticsearch:
   volumes:
@@ -28,6 +28,6 @@ elasticsearch:
     - 9300:9200
 
 redis:
-  image: redis:latest
+  image: redis:3.2
   ports:
     - 6377:6379

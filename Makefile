@@ -6,4 +6,4 @@ server:
 	cd ./docker;docker-compose up -d
 
 log:
-	cd ./docker;docker-compose logs beego
+	cd ./docker;docker-compose logs -f beego

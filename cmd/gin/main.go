@@ -1,13 +1,12 @@
 package main
 
 import (
-	"flag"
+	"errors"
 	"fmt"
 
-	"github.com/codegangsta/cli"
 	"github.com/codegangsta/envy/lib"
-	"github.com/golang/glog"
-	"github.com/zykzhang/site-demo/cmd/gin/lib"
+	"github.com/codegangsta/gin/lib"
+	"gopkg.in/urfave/cli.v1"
 
 	"log"
 	"os"
@@ -21,11 +20,14 @@ import (
 var (
 	startTime  = time.Now()
 	logger     = log.New(os.Stdout, "[gin] ", 0)
+	immediate  = false
 	buildError error
+	colorGreen = string([]byte{27, 91, 57, 55, 59, 51, 50, 59, 49, 109})
+	colorRed   = string([]byte{27, 91, 57, 55, 59, 51, 49, 59, 49, 109})
+	colorReset = string([]byte{27, 91, 48, 109})
 )
 
 func main() {
-	// flag.Parse()
 	app := cli.NewApp()
 	app.Name = "gin"
 	app.Usage = "A live reload utility for Go web applications."
@@ -50,11 +52,6 @@ func main() {
 			Name:  "path,t",
 			Value: ".",
 			Usage: "Path to watch files from",
-		},
-		cli.StringFlag{
-			Name:  "watch",
-			Value: "./",
-			Usage: "paths to watch",
 		},
 		cli.BoolFlag{
 			Name:  "immediate,i",
@@ -84,11 +81,9 @@ func main() {
 }
 
 func MainAction(c *cli.Context) {
-	flag.Set("logtostderr", "true")
 	port := c.GlobalInt("port")
 	appPort := strconv.Itoa(c.GlobalInt("appPort"))
-	immediate := c.GlobalBool("immediate")
-	immediate = true
+	immediate = c.GlobalBool("immediate")
 
 	// Bootstrap the environment
 	envy.Bootstrap()
@@ -96,14 +91,13 @@ func MainAction(c *cli.Context) {
 	// Set the PORT env
 	os.Setenv("PORT", appPort)
 
-	var err error
-	// wd, err := os.Getwd()
-	// if err != nil {
-	// 	logger.Fatal(err)
-	// }
+	wd, err := os.Getwd()
+	if err != nil {
+		logger.Fatal(err)
+	}
 
 	builder := gin.NewBuilder(c.GlobalString("path"), c.GlobalString("bin"), c.GlobalBool("godep"))
-	runner := gin.NewRunner(filepath.Join(c.GlobalString("path"), builder.Binary()), c.Args()...)
+	runner := gin.NewRunner(filepath.Join(wd, builder.Binary()), c.Args()...)
 	runner.SetWriter(os.Stdout)
 	proxy := gin.NewProxy(builder, runner)
 
@@ -118,22 +112,17 @@ func MainAction(c *cli.Context) {
 	}
 
 	logger.Printf("listening on port %d\n", port)
+
 	shutdown(runner)
 
 	// build right now
-	build(builder, runner, logger, immediate)
+	build(builder, runner, logger)
 
 	// scan for changes
-	for {
-		scanChanges(c.GlobalString("watch"), func() {
-			err := runner.Kill()
-			if err != nil {
-				glog.Infof("Kill failed: %v", err)
-			}
-			build(builder, runner, logger, immediate)
-		})
-		time.Sleep(5000 * time.Millisecond)
-	}
+	scanChanges(c.GlobalString("path"), func(path string) {
+		runner.Kill()
+		build(builder, runner, logger)
+	})
 }
 
 func EnvAction(c *cli.Context) {
@@ -149,86 +138,49 @@ func EnvAction(c *cli.Context) {
 
 }
 
-func build(builder gin.Builder, runner gin.Runner, logger *log.Logger, immediate bool) {
+func build(builder gin.Builder, runner gin.Runner, logger *log.Logger) {
 	err := builder.Build()
 	if err != nil {
 		buildError = err
-		logger.Println("ERROR! Build failed.")
+		logger.Printf("%sERROR! Build failed.%s\n", colorRed, colorReset)
 		fmt.Println(builder.Errors())
 	} else {
 		// print success only if there were errors before
 		if buildError != nil {
-			logger.Println("Build Successful")
+			logger.Printf("%sBuild Successful%s\n", colorGreen, colorReset)
 		}
 		buildError = nil
 		if immediate {
-			_, err := runner.Run()
-			if err != nil {
-				glog.Infof("Run failed: %v", err)
-			}
+			runner.Run()
 		}
 	}
 
 	time.Sleep(100 * time.Millisecond)
 }
 
-func scanChanges(watchPath string, cb func()) {
-	var fileToMonitor []string
-	err := filepath.Walk(watchPath, func(path string, info os.FileInfo, err error) error {
-		if path == ".git" {
-			return filepath.SkipDir
-		}
+type scanCallback func(path string)
 
-		basePath := filepath.Base(path)
-
-		// ignore hidden files
-		if basePath[0] == '.' {
-			return nil
-		}
-
-		if basePath == "Godeps" || basePath == "node_modules" {
-			return filepath.SkipDir
-		}
-		ext := filepath.Ext(path)
-		if ext != ".amber" && ext != ".go" {
-			return nil
-		}
-		fileToMonitor = append(fileToMonitor, path)
-		return nil
-	})
-	if err != nil {
-		glog.Errorf("Error walking dir: %s", watchPath)
-		return
-	}
-
-	if len(fileToMonitor) == 0 {
-		glog.Errorf("No file to monitor!")
-		return
-	}
-	glog.Infof("Monitoring %d files.", len(fileToMonitor))
+func scanChanges(watchPath string, cb scanCallback) {
 	for {
-		var maxModTime time.Time
-		for _, path := range fileToMonitor {
-			stat, err := os.Stat(path)
-			if err != nil {
-				glog.Warningf("Failed to stat: %s. Assumed changed.", path)
-				cb()
-				startTime = time.Now()
-				return
+		filepath.Walk(watchPath, func(path string, info os.FileInfo, err error) error {
+			if path == ".git" {
+				return filepath.SkipDir
 			}
 
-			t := stat.ModTime()
-			if t.After(maxModTime) && t.After(startTime) {
-				glog.Infof("Found %s changed", path)
-				maxModTime = t
+			// ignore hidden files
+			if filepath.Base(path)[0] == '.' {
+				return nil
 			}
-		}
-		if maxModTime.After(startTime) {
-			cb()
-			startTime = maxModTime
-			return
-		}
-		time.Sleep(2000 * time.Millisecond)
+
+			if filepath.Ext(path) == ".go" && info.ModTime().After(startTime) {
+				cb(path)
+				startTime = time.Now()
+				return errors.New("done")
+			}
+
+			return nil
+		})
+		time.Sleep(500 * time.Millisecond)
 	}
 }
 

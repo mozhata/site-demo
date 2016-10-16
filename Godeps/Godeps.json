@@ -8,43 +8,43 @@
 	"Deps": [
 		{
 			"ImportPath": "github.com/astaxie/beego",
-			"Comment": "v1.6.1-5-g88c5dfa",
-			"Rev": "88c5dfa6ead42e624c2e7d9e04eab6cb2d07412a"
+			"Comment": "v1.7.1",
+			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
 		},
 		{
 			"ImportPath": "github.com/astaxie/beego/config",
-			"Comment": "v1.6.1-5-g88c5dfa",
-			"Rev": "88c5dfa6ead42e624c2e7d9e04eab6cb2d07412a"
+			"Comment": "v1.7.1",
+			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
 		},
 		{
 			"ImportPath": "github.com/astaxie/beego/context",
-			"Comment": "v1.6.1-5-g88c5dfa",
-			"Rev": "88c5dfa6ead42e624c2e7d9e04eab6cb2d07412a"
+			"Comment": "v1.7.1",
+			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
 		},
 		{
 			"ImportPath": "github.com/astaxie/beego/grace",
-			"Comment": "v1.6.1-5-g88c5dfa",
-			"Rev": "88c5dfa6ead42e624c2e7d9e04eab6cb2d07412a"
+			"Comment": "v1.7.1",
+			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
 		},
 		{
 			"ImportPath": "github.com/astaxie/beego/logs",
-			"Comment": "v1.6.1-5-g88c5dfa",
-			"Rev": "88c5dfa6ead42e624c2e7d9e04eab6cb2d07412a"
+			"Comment": "v1.7.1",
+			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
 		},
 		{
 			"ImportPath": "github.com/astaxie/beego/session",
-			"Comment": "v1.6.1-5-g88c5dfa",
-			"Rev": "88c5dfa6ead42e624c2e7d9e04eab6cb2d07412a"
+			"Comment": "v1.7.1",
+			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
 		},
 		{
 			"ImportPath": "github.com/astaxie/beego/toolbox",
-			"Comment": "v1.6.1-5-g88c5dfa",
-			"Rev": "88c5dfa6ead42e624c2e7d9e04eab6cb2d07412a"
+			"Comment": "v1.7.1",
+			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
 		},
 		{
 			"ImportPath": "github.com/astaxie/beego/utils",
-			"Comment": "v1.6.1-5-g88c5dfa",
-			"Rev": "88c5dfa6ead42e624c2e7d9e04eab6cb2d07412a"
+			"Comment": "v1.7.1",
+			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
 		},
 		{
 			"ImportPath": "github.com/codegangsta/cli",
@@ -112,35 +112,6 @@
 			"ImportPath": "github.com/smartystreets/goconvey/convey/reporting",
 			"Comment": "1.6.2-2-gc53abc9",
 			"Rev": "c53abc99456fa3402dd33c15ee51c3e545e04a3f"
-		},
-		{
-			"ImportPath": "gopkg.in/bsm/ratelimit.v1",
-			"Rev": "db14e161995a5177acef654cb0dd785e8ee8bc22"
-		},
-		{
-			"ImportPath": "gopkg.in/redis.v3",
-			"Comment": "v3.6.2",
-			"Rev": "5183f8dcde9737db7583dbfa9881800dba26e3fa"
-		},
-		{
-			"ImportPath": "gopkg.in/redis.v3/internal",
-			"Comment": "v3.6.2",
-			"Rev": "5183f8dcde9737db7583dbfa9881800dba26e3fa"
-		},
-		{
-			"ImportPath": "gopkg.in/redis.v3/internal/consistenthash",
-			"Comment": "v3.6.2",
-			"Rev": "5183f8dcde9737db7583dbfa9881800dba26e3fa"
-		},
-		{
-			"ImportPath": "gopkg.in/redis.v3/internal/hashtag",
-			"Comment": "v3.6.2",
-			"Rev": "5183f8dcde9737db7583dbfa9881800dba26e3fa"
-		},
-		{
-			"ImportPath": "gopkg.in/redis.v3/internal/pool",
-			"Comment": "v3.6.2",
-			"Rev": "5183f8dcde9737db7583dbfa9881800dba26e3fa"
 		}
 	]
 }
