@@ -9,6 +9,7 @@ import (
 	"github.com/garyburd/redigo/redis"
 	"github.com/golang/glog"
 	"github.com/julienschmidt/httprouter"
+	"github.com/urfave/negroni"
 )
 
 func openLog() {
@@ -21,10 +22,17 @@ func main() {
 	router := httprouter.New()
 
 	router.GET("/", welcome)
-	router.GET("/andy/:name", hi)
 	router.GET("/redis", checkRedis)
+	router.GET("/andy/:name", hi)
+	router.GET("/match/*filepath", matchAll)
 
-	log.Fatal(http.ListenAndServe(":8080", router))
+	n := negroni.Classic()
+	n.UseHandler(router)
+
+	log.Fatal(http.ListenAndServe(":8080", n))
+}
+func matchAll(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	fmt.Fprintf(w, "the filepath is %s", ps.ByName("filepath"))
 }
 
 func welcome(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
