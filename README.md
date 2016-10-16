@@ -69,3 +69,10 @@ github.com/tools/godep
 查看log:
 
 > fig logs beego
+
+negroni
+httprouter
+golang.org/x/net/trace
+github.com/gorilla/mux
+github.com/jinzhu/gorm"
+github.com/gorilla/schema

@@ -1,1 +1,3 @@
-mysite/gin-bin
+server/server
+
+docker/db

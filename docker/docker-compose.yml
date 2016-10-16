@@ -1,7 +1,7 @@
-beego:
+goserver:
   image: golang:1.7.1
   working_dir: /go/src/github.com/zykzhang/site-demo
-  command: go run cmd/gin/main.go -i --watch=./ --path=mysite/ run -- --v=1 --alsologtostderr
+  command: go run cmd/livereload/main.go -watch=server -o=server
   volumes:
     - $HOME/go/src/github.com/zykzhang/site-demo:/go/src/github.com/zykzhang/site-demo
   ports:
@@ -10,24 +10,42 @@ beego:
   links:
     - mongo
     - elasticsearch
-    - redis:redis
+    - redis
+    - mysql
+  environment:
+    MYSQL_PWD: root
 
 mongo:
   image: mongo:3.2
     # not compatible with mac
+  container_name: site-demo_mongo
   volumes:
-    - $HOME/work/src/github.com/zykzhang/site-demo/db/mongo:/data/db
+    - $HOME/go/src/github.com/zykzhang/site-demo/docker/db/mongo:/data/db/mongo
   ports:
-    - 27016:27017
+    - 27027:27017
 
 elasticsearch:
-  volumes:
-    - $HOME/work/src/github.com/zykzhang/data/mongo:/data
   image: elasticsearch:2.3.2
+  container_name: site-demo_es
+  volumes:
+    - $HOME/go/src/github.com/zykzhang/site-demo/docker/db/es/data:/data
+    # - $HOME/go/src/github.com/zykzhang/site-demo/docker/db/es/data:/usr/share/elasticsearch/data
   ports:
-    - 9300:9200
+    - 9200:9200
+    - 9300:9300
 
 redis:
   image: redis:3.2
+  container_name: site-demo_redis
   ports:
     - 6377:6379
+
+mysql:
+  image: mysql:5.7
+  container_name: site-demo_mysql
+  volumes:
+    - $HOME/go/src/github.com/zykzhang/site-demo/docker/db/mysql:/var/lib/mysql
+  ports:
+    - 3308:3306
+  environment:
+    MYSQL_ROOT_PASSWORD: root

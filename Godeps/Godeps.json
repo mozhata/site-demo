@@ -47,17 +47,9 @@
 			"Rev": "2d87d4feafeea0a133d217a82e6e02df0348fed5"
 		},
 		{
-			"ImportPath": "github.com/codegangsta/cli",
-			"Comment": "v1.17.0-44-g9a18ffa",
-			"Rev": "9a18ffad6c548ca4d458d4c30a8aa4d181cf92fa"
-		},
-		{
-			"ImportPath": "github.com/codegangsta/envy/lib",
-			"Rev": "4b78388c8ce4fa412440ca4eaa654e2fdd752e49"
-		},
-		{
-			"ImportPath": "github.com/codegangsta/gin/lib",
-			"Rev": "20c9707f2046c2a1019cea9659931731cf15a7dd"
+			"ImportPath": "github.com/fsnotify/fsnotify",
+			"Comment": "v1.4.2",
+			"Rev": "629574ca2a5df945712d3079857300b5e4da0236"
 		},
 		{
 			"ImportPath": "github.com/garyburd/redigo/internal",
@@ -112,6 +104,14 @@
 			"ImportPath": "github.com/smartystreets/goconvey/convey/reporting",
 			"Comment": "1.6.2-2-gc53abc9",
 			"Rev": "c53abc99456fa3402dd33c15ee51c3e545e04a3f"
+		},
+		{
+			"ImportPath": "github.com/zykzhang/livereload/colorlog",
+			"Rev": "213588caa53df1688fa1691830f2aeacdc42c32e"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "9bb9f0998d48b31547d975974935ae9b48c7a03c"
 		}
 	]
 }

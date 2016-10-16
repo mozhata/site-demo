@@ -3,7 +3,7 @@ package routers
 import (
 	"flag"
 
-	"github.com/zykzhang/site-demo/mysite/controllers"
+	"github.com/zykzhang/site-demo/server/controllers"
 
 	"github.com/astaxie/beego"
 )

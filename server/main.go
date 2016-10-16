@@ -2,11 +2,10 @@ package main
 
 import (
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/context"
 	"github.com/garyburd/redigo/redis"
 	"github.com/golang/glog"
-	_ "github.com/zykzhang/site-demo/mysite/routers"
-	// "go.net/context"
-	"github.com/astaxie/beego/context"
+	_ "github.com/zykzhang/site-demo/server/routers"
 )
 
 func main() {
