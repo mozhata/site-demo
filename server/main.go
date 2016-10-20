@@ -10,6 +10,7 @@ import (
 	"github.com/golang/glog"
 	"github.com/julienschmidt/httprouter"
 	"github.com/urfave/negroni"
+	"github.com/zykzhang/site-demo/server/database/sqldb"
 )
 
 func openLog() {
@@ -19,18 +20,48 @@ func openLog() {
 func main() {
 	openLog()
 
+	checkMySQL()
+
 	router := httprouter.New()
 
 	router.GET("/", welcome)
 	router.GET("/redis", checkRedis)
 	router.GET("/andy/:name", hi)
 	router.GET("/match/*filepath", matchAll)
+	router.GET("/protected", basicAuth(protected, "kang", "123!"))
+
+	// router.NotFound = notFound
 
 	n := negroni.Classic()
 	n.UseHandler(router)
 
 	log.Fatal(http.ListenAndServe(":8080", n))
 }
+
+func notFound(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "this is not found handler")
+}
+
+func protected(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	fmt.Fprintf(w, "this is protected ~")
+}
+
+func basicAuth(h httprouter.Handle, requiredUser, requiredPassword string) httprouter.Handle {
+	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+		// Get the Basic Authentication credentials
+		user, password, hasAuth := r.BasicAuth()
+
+		if hasAuth && user == requiredUser && password == requiredPassword {
+			// Delegate request to the given handle
+			h(w, r, ps)
+		} else {
+			// Request Basic Authentication otherwise
+			w.Header().Set("WWW-Authenticate", "Basic realm=Restricted")
+			http.Error(w, http.StatusText(http.StatusUnauthorized), http.StatusUnauthorized)
+		}
+	}
+}
+
 func matchAll(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	fmt.Fprintf(w, "the filepath is %s", ps.ByName("filepath"))
 }
@@ -60,4 +91,9 @@ func checkRedis(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		glog.Error(err)
 	}
 	fmt.Fprintf(w, "check redis, the value got is %s", v)
+}
+
+func checkMySQL() {
+	env := sqldb.NewEnv()
+	glog.Infoln(env.HasTable("local_auth"))
 }

@@ -12,3 +12,7 @@ log:
 
 clean_containers:
 	docker rm $$(docker stop $$(docker ps -q -a))
+
+.PHONY: connect_mysql
+connect_mysql:
+	mysql -h127.0.0.1 -P3308 -uroot -p

@@ -113,12 +113,12 @@ func (w *watch) watcher(paths []string) {
 					continue
 				}
 
-				mt := w.getFileModTime(event.Name)
-				if t := eventTime[event.Name]; mt == t {
-					build = false
-				}
+				// mt := w.getFileModTime(event.Name)
+				// if t := eventTime[event.Name]; mt == t {
+				// 	build = false
+				// }
 
-				eventTime[event.Name] = mt
+				// eventTime[event.Name] = mt
 
 				if build {
 					go func() {
@@ -254,5 +254,6 @@ func recursivePath(recursive bool, paths []string) []string {
 		}
 	}
 
+	logger.Info("paths: %#v, ret: %#v", paths, ret)
 	return ret
 }
