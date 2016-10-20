@@ -103,6 +103,17 @@ func (w *watch) watcher(paths []string) {
 		for {
 			select {
 			case event := <-watcher.Events:
+				if event.Op == fsnotify.Create {
+					finfo, err := os.Stat(event.Name)
+					if err != nil {
+						logger.Error("os.Stat(%s) err. err: %s", event.Name, err)
+					}
+					if finfo.IsDir() {
+						logger.Info("add new floder %s to watcher", event.Name)
+						watcher.Add(event.Name)
+						continue
+					}
+				}
 				build := true
 				if !w.checkIfWatchExt(event.Name) {
 					continue
@@ -254,6 +265,5 @@ func recursivePath(recursive bool, paths []string) []string {
 		}
 	}
 
-	logger.Info("paths: %#v, ret: %#v", paths, ret)
 	return ret
 }
