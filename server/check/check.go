@@ -11,8 +11,11 @@ import (
 	"github.com/golang/glog"
 	"github.com/julienschmidt/httprouter"
 	"github.com/zykzhang/site-demo/server/database/sqldb"
+	"github.com/zykzhang/site-demo/skeleton/reply"
 	"github.com/zykzhang/site-demo/skeleton/route"
 )
+
+type M map[string]interface{}
 
 func CheckMySQL() {
 	env := sqldb.NewEnv()
@@ -50,7 +53,8 @@ func NewRoutes() []*route.Route {
 }
 
 func welcome(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	fmt.Fprintf(w, "welcome, this is powered by %s", "httprouter")
+	response := reply.JSON(M{"wel": "this is powered by httprouter"})
+	response(w)
 }
 
 func checkRedis(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
@@ -69,21 +73,25 @@ func checkRedis(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	if err != nil {
 		glog.Error(err)
 	}
-	fmt.Fprintf(w, "check redis, the value got is %s", v)
+	response := reply.JSON(M{"result": fmt.Sprintf("check redis, the value got is %s", v)})
+	response(w)
 }
 
 func hi(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	fmt.Fprintf(w, "hello %s", ps.ByName("name"))
+	response := reply.JSON(M{"result": fmt.Sprintf("hello %s", ps.ByName("name"))})
+	response(w)
 }
 
 func matchAll(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	fmt.Fprintf(w, "the filepath is %s", ps.ByName("filepath"))
+	response := reply.JSON(M{"result": fmt.Sprintf("the filepath is %s", ps.ByName("filepath"))})
+	response(w)
 }
 
 func basicAuth(h httprouter.Handle, requiredUser, requiredPassword string) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		// Get the Basic Authentication credentials
 		user, password, hasAuth := r.BasicAuth()
+		glog.Infoln("user, pwd and hasAuth: ", user, password, hasAuth)
 
 		if hasAuth && user == requiredUser && password == requiredPassword {
 			// Delegate request to the given handle
@@ -96,5 +104,6 @@ func basicAuth(h httprouter.Handle, requiredUser, requiredPassword string) httpr
 	}
 }
 func protected(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	fmt.Fprintf(w, "this is protected ~")
+	response := reply.JSON(M{"result": "this is protected ~"})
+	response(w)
 }

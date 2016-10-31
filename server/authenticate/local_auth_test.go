@@ -21,12 +21,13 @@ func TestGenerateSecret(t *testing.T) {
 	fmt.Println(generateSecret(pwd, uuid, 99))
 }
 
+/*
 func BenchmarkEncryptPWD(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		hashed := encryptPWD(pwd)
 		fmt.Sprintf("%s", hashed)
 	}
-}
+}*/
 
 func BenchmarkStr(b *testing.B) {
 	str := ""
@@ -42,7 +43,7 @@ func BenchmarkLenStr(b *testing.B) {
 	}
 }
 
-func BenchmarkCheckPWD(b *testing.B) {
+/*func BenchmarkCheckPWD(b *testing.B) {
 	hashed := encryptPWD(pwd)
 	for i := 0; i < b.N; i++ {
 		checkPWD(hashed, pwd)
@@ -75,7 +76,7 @@ func BenchmarkCheckSha(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		checkSha(secret, pwd)
 	}
-}
+}*/
 
 func encryByMd5(pwd string) string {
 	encryed := md5.Sum([]byte(fmt.Sprintf("%s%s", pwd, salt)))
@@ -98,7 +99,7 @@ func checkSha(encryed, pwd string) bool {
 }
 
 func encryptPWD(pwd string) string {
-	hashed, err := bcrypt.GenerateFromPassword([]byte(pwd), COST)
+	hashed, err := bcrypt.GenerateFromPassword([]byte(pwd), 3)
 	if err != nil {
 		panic(err)
 	}

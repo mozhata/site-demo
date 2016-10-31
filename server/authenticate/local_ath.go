@@ -26,7 +26,7 @@ func (loc *LocalAuth) GenerateSecret(pwd string) {
 	loc.Secret = generateSecret(pwd, loc.UUID, loc.UserID)
 }
 
-func (loc *LocalAuth) CheckPWD(pwd string) bool {
+func (loc *LocalAuth) IsValidPWD(pwd string) bool {
 	return generateSecret(pwd, loc.UUID, loc.UserID) == loc.Secret
 }
 
