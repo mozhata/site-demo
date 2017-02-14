@@ -10,9 +10,9 @@ import (
 	"github.com/garyburd/redigo/redis"
 	"github.com/golang/glog"
 	"github.com/julienschmidt/httprouter"
-	"github.com/zykzhang/site-demo/server/database/sqldb"
-	"github.com/zykzhang/site-demo/skeleton/reply"
-	"github.com/zykzhang/site-demo/skeleton/route"
+	"github.com/mozhata/site-demo/server/database/sqldb"
+	"github.com/mozhata/site-demo/skeleton/reply"
+	"github.com/mozhata/site-demo/skeleton/route"
 )
 
 type M map[string]interface{}

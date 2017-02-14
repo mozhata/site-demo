@@ -1,43 +1,11 @@
 {
-	"ImportPath": "github.com/zykzhang/site-demo",
-	"GoVersion": "go1.6",
-	"GodepVersion": "v72",
+	"ImportPath": "github.com/mozhata/site-demo",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v79",
 	"Packages": [
 		"./..."
 	],
 	"Deps": [
-		{
-			"ImportPath": "bitbucket.org/applysquare/applysquare-go/pkg/api",
-			"Rev": "c62b0b24ca76f187257a32242b5107185ed07cef"
-		},
-		{
-			"ImportPath": "bitbucket.org/applysquare/applysquare-go/pkg/api/negroni",
-			"Rev": "c62b0b24ca76f187257a32242b5107185ed07cef"
-		},
-		{
-			"ImportPath": "bitbucket.org/applysquare/applysquare-go/pkg/base/trace",
-			"Rev": "c62b0b24ca76f187257a32242b5107185ed07cef"
-		},
-		{
-			"ImportPath": "bitbucket.org/applysquare/applysquare-go/pkg/common",
-			"Rev": "c62b0b24ca76f187257a32242b5107185ed07cef"
-		},
-		{
-			"ImportPath": "bitbucket.org/applysquare/applysquare-go/pkg/i18n",
-			"Rev": "c62b0b24ca76f187257a32242b5107185ed07cef"
-		},
-		{
-			"ImportPath": "bitbucket.org/applysquare/applysquare-go/pkg/util/h",
-			"Rev": "c62b0b24ca76f187257a32242b5107185ed07cef"
-		},
-		{
-			"ImportPath": "github.com/eknkc/amber",
-			"Rev": "a69a021e158c3b06700cc881c05d0923f627b578"
-		},
-		{
-			"ImportPath": "github.com/eknkc/amber/parser",
-			"Rev": "a69a021e158c3b06700cc881c05d0923f627b578"
-		},
 		{
 			"ImportPath": "github.com/fsnotify/fsnotify",
 			"Comment": "v1.4.2-1-gbd2828f",
@@ -63,20 +31,6 @@
 			"Rev": "23def4e6c14b4da8ac2ed8007337bc5eb5007998"
 		},
 		{
-			"ImportPath": "github.com/gorilla/context",
-			"Comment": "v1.1-4-gaed02d1",
-			"Rev": "aed02d124ae4a0e94fea4541c8effd05bf0c8296"
-		},
-		{
-			"ImportPath": "github.com/gorilla/mux",
-			"Comment": "v1.1-27-g757bef9",
-			"Rev": "757bef944d0f21880861c2dd9c871ca543023cba"
-		},
-		{
-			"ImportPath": "github.com/gorilla/schema",
-			"Rev": "0164a00ab4cd01d814d8cd5bf63fd9fcea30e23b"
-		},
-		{
 			"ImportPath": "github.com/jinzhu/gorm",
 			"Comment": "v1.0-25-gbf0e236",
 			"Rev": "bf0e23607840019d62e32e87e9af48e881d74b1e"
@@ -96,6 +50,10 @@
 			"Rev": "d8ff598a019f2c7bad0980917a588193cf26666e"
 		},
 		{
+			"ImportPath": "github.com/mozhata/livereload/colorlog",
+			"Rev": "d6c426a348496d68be641a7f4151574eb1065ecf"
+		},
+		{
 			"ImportPath": "github.com/pborman/uuid",
 			"Comment": "v1.0-15-gb984ec7",
 			"Rev": "b984ec7fa9ff9e428bd0cf0abf429384dfbe3e37"
@@ -106,28 +64,12 @@
 			"Rev": "3f7ce7b928e14ff890b067e5bbbc80af73690a9c"
 		},
 		{
-			"ImportPath": "github.com/zykzhang/livereload/colorlog",
-			"Rev": "88bddc490ade59ef66b8053ac423331a45a8ceae"
-		},
-		{
 			"ImportPath": "golang.org/x/crypto/bcrypt",
 			"Rev": "5f31782cfb2b6373211f8f9fbf31283fa234b570"
 		},
 		{
 			"ImportPath": "golang.org/x/crypto/blowfish",
 			"Rev": "5f31782cfb2b6373211f8f9fbf31283fa234b570"
-		},
-		{
-			"ImportPath": "golang.org/x/net/context",
-			"Rev": "8b4af36cd21a1f85a7484b49feb7c79363106d8e"
-		},
-		{
-			"ImportPath": "golang.org/x/net/internal/timeseries",
-			"Rev": "8b4af36cd21a1f85a7484b49feb7c79363106d8e"
-		},
-		{
-			"ImportPath": "golang.org/x/net/trace",
-			"Rev": "8b4af36cd21a1f85a7484b49feb7c79363106d8e"
 		},
 		{
 			"ImportPath": "golang.org/x/sys/unix",

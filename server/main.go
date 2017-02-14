@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/zykzhang/site-demo/server/check"
-	"github.com/zykzhang/site-demo/skeleton/route"
+	"github.com/mozhata/site-demo/server/check"
+	"github.com/mozhata/site-demo/skeleton/route"
 )
 
 func openLog() {
