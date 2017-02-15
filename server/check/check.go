@@ -78,6 +78,7 @@ func checkRedis(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 }
 
 func hi(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	glog.Infof("params: %#v\n", ps)
 	response := reply.JSON(M{"result": fmt.Sprintf("hello %s", ps.ByName("name"))})
 	response(w)
 }

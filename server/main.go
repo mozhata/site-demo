@@ -9,13 +9,12 @@ import (
 	"github.com/mozhata/site-demo/skeleton/route"
 )
 
-func openLog() {
-	flag.Lookup("logtostderr").Value.Set("true")
+func init() {
+	flag.Set("logtostderr", "true")
 	flag.Parse()
 }
-func main() {
-	openLog()
 
+func main() {
 	check.CheckMySQL()
 
 	routes := check.NewRoutes()

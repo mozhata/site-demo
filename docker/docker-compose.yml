@@ -1,9 +1,9 @@
 sitedemo_server:
-  image: golang:1.7.1
-  working_dir: /go/src/github.com/zykzhang/site-demo
+  image: golang:1.7.5-alpine
+  working_dir: /go/src/github.com/mozhata/site-demo
   command: go run cmd/livereload/main.go -watch=server -o=server
   volumes:
-    - $HOME/go/src/github.com/zykzhang/site-demo:/go/src/github.com/zykzhang/site-demo
+    - $HOME/go/src/github.com/mozhata/site-demo:/go/src/github.com/mozhata/site-demo
   ports:
     - 9090:8080
   links:
@@ -19,7 +19,7 @@ sitedemo_server:
 #     # not compatible with mac
 #   container_name: site-demo_mongo
 #   volumes:
-#     - $HOME/go/src/github.com/zykzhang/site-demo/docker/db/mongo:/data/db/mongo
+#     - $HOME/go/src/github.com/mozhata/site-demo/docker/db/mongo:/data/db/mongo
 #   ports:
 #     - 27027:27017
 
@@ -27,8 +27,8 @@ sitedemo_server:
 #   image: elasticsearch:2.3.2
 #   container_name: site-demo_es
 #   volumes:
-#     - $HOME/go/src/github.com/zykzhang/site-demo/docker/db/es/data:/data
-#     # - $HOME/go/src/github.com/zykzhang/site-demo/docker/db/es/data:/usr/share/elasticsearch/data
+#     - $HOME/go/src/github.com/mozhata/site-demo/docker/db/es/data:/data
+#     # - $HOME/go/src/github.com/mozhata/site-demo/docker/db/es/data:/usr/share/elasticsearch/data
 #   ports:
 #     - 9200:9200
 #     - 9300:9300
@@ -43,7 +43,7 @@ mysql:
   image: mysql:5.7
   container_name: site-demo_mysql
   volumes:
-    - $HOME/go/src/github.com/zykzhang/site-demo/docker/db/mysql:/var/lib/mysql
+    - $HOME/go/src/github.com/mozhata/site-demo/docker/db/mysql:/var/lib/mysql
   ports:
     - 3308:3306
   environment:

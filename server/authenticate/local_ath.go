@@ -15,13 +15,6 @@ type LocalAuth struct {
 	Secret string `josn:"secret"`
 }
 
-// func NewLocalAuth(userID int64, uuid string) *LocalAuth {
-// 	return &LocalAuth{
-// 		UserID: userID,
-// 		UUID:   uuid,
-// 	}
-// }
-
 func (loc *LocalAuth) GenerateSecret(pwd string) {
 	loc.Secret = generateSecret(pwd, loc.UUID, loc.UserID)
 }
